@@ -1,0 +1,34 @@
+{% extends 'AppBundle:Sitio:template.html.twig' %}
+
+{% block section_home_extra %}interna{% endblock %}
+{% block content %}
+	<section class="intContent">
+		<div class="container">
+			<h3>Diagnostico por imágenes</h3>
+			<div class="row">
+				<div class="col-sm-8">
+					<p>El Centro de diagnóstico por imágenes brinda sus servicios sumando compromiso de calidad para el paciente año a año.</p>
+					<p>Una de las premisas fundamentales es considerar la Calidad y el Servicio al Paciente.</p>
+					<h4>Prestaciones</h4>
+					<ul>
+						<li>Resonancia mágnetica digital de alto campo (Resonador Abierto)</li>
+						<li>Resonancia mágnetica digital de alto campo (Resonador Cerrado)</li>
+						<li>Tomografía computada multislice con reconstrucción 3D</li>
+						<li>Ecografìas y Doppler color</li>
+						<li>Mamografía Digital</li>
+						<li>Densitometría ósea</li>
+						<li>Radiología digital</li>
+					</ul>
+					<div class="highlight address">
+						<p><i class="fas fa-map-marker-alt"></i><b>Ubicación: Av. Pte. Perón 1796 - San Miguel - Planta Baja | Av. Pte. Perón 1778</b></p>
+						<p><i class="fas fa-phone"></i><b>Atención de Lunes a Viernes de 8:00 a 24:00 hs - Sábados de 8:00 a 12:00 hs</b></p>
+						<p><i class="fas fa-hospital"></i><b>Urgencias: las 24 hs los 365 días del año</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<img src="/images/internas/sanatorio-general-sarmiento-05.jpg" alt="Sanatorio General Sarmiento">
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+    {% for flash_message in app.session.flashBag.get('error') %}
+    		<script>
+    			$(document).ready(function() {
+    				addErrorMessage('{{ flash_message }}');
+        		});
+    		</script>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+    		<script>
+    			$(document).ready(function() {
+    				addSuccessMessage('{{ flash_message }}');
+        		});
+    		</script>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('info') %}
+    		<script>
+    			$(document).ready(function() {
+    				addInfoMessage('{{ flash_message }}');
+        		});
+    		</script>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('warning') %}
+    		<script>
+    			$(document).ready(function() {
+    				addWarningMessage('{{ flash_message }}');
+        		});
+    		</script>
+    {% endfor %}

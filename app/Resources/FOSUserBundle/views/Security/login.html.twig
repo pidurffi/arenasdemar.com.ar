@@ -1,0 +1,129 @@
+{% extends 'AvanzuAdminThemeBundle:layout:login-layout.html.twig' %}
+
+{% block avanzu_login_title %}SG Sarmiento - Panel de control{% endblock %}
+{% block avanzu_logo_login %}<img src="https://www.mardelaspampas.travel/bundles/mdlpsitio/images/header/logo.png" />{% endblock %}
+{% block avanzu_login_box_msg %}
+	{{ 'Ingrese para iniciar su sesión'|trans({}, 'AvanzuAdminTheme') }}
+    {% if error|default(false) %}
+       <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+{% endblock %}
+{% block avanzu_login_form %}
+        <form action="{{ path('fos_user_security_check') }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <div class="form-group has-feedback">
+                <input type="text" name="_username" class="form-control" placeholder="Email" value="{{ last_username }}">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input name="_password" type="password" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox" checked id="remember_me" name="_remember_me" value="on" />Recordarme
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+                </div>
+                <!-- /.col -->
+            </div>
+            
+        </form>
+{% endblock %}
+{% block avanzu_login_social_auth %}
+{% endblock %}
+ {% block avanzu_login_actions %}
+ 		{#
+        <a href="#">
+            {{ 'I forgot my password'|trans({}, 'AvanzuAdminTheme') }}
+        </a>
+ 		#}
+{% endblock %}
+
+{#
+
+{% extends '@EasyAdmin/default/layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block head_stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/app/stylesheets/admin.css') }}" rel="stylesheet"/>
+    <style>
+        header.main-header,
+        aside.main-sidebar {
+            display: none;
+        }
+        .wrapper {
+            background: #F5F5F5;
+        }
+        .fixed .content-wrapper {
+            margin-left: 0;
+            padding-top: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block page_title 'La Mansión Del Bosque | Admin' %}
+{% block body_id 'welcome' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="admin-logo"></div>
+        <h1>Bienvenido al administrador de La Mansión del Bosque</h1>
+        <div class="row">
+            <div class="login-container">
+                <h2>
+                    <i class="fa fa-lock"></i>
+                    Logueate
+                </h2>
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if error %}
+                        <div class="has-error">
+                            <p class="error-block">
+                                <span class="label label-danger">
+                                    {{ 'errors'|transchoice(1, domain = 'EasyAdminBundle') }}
+                                </span>
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                    <div class="form-group">
+                        <label for="username">{{ 'security.login.username'|trans }}</label>
+                        <input class="form-control" type="text" id="username" name="_username" value="" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">{{ 'security.login.password'|trans }}</label>
+                        <input class="form-control" type="password" id="password" name="_password" required="required" value="" />
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checked id="remember_me" name="_remember_me" value="on" />
+                            {{ 'security.login.remember_me'|trans }}
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+                    </div>
+                </form>
+            </div>
+
+            <hr class="visible-xs" />
+
+        </div>
+    </div>
+{% endblock %}
+#}

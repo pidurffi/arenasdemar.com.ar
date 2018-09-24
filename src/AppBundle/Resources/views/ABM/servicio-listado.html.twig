@@ -1,0 +1,21 @@
+{% extends 'AppBundle:ABM:template-listado.html.twig' %}
+
+{% block avanzu_page_title %}
+Servicios Profesionales
+{% endblock %}
+
+{% block titulo_nuevo_item %}Nuevo Servicio{% endblock %}
+{% block avanzu_page_content  %}
+	{% set nombre_entidad = 'servicio' %}
+	{% set nombre_entidad_plural = 'servicios' %}
+	{% set iterables = servicios %}
+	{% set puede_crear = true %}
+	{% set puede_borrar = true %}
+	{% set campos = [
+	    { 'titulo': 'Nombre','campo':'nombre', 'data_info': true},
+	    { 'titulo': 'Destacado','campo':'destacado'},
+	] %}
+	{% set form_routing = 'panel_servicio_form' %}
+	{% set delete_routing = 'panel_servicio_borrar' %}
+    {{parent()}}
+{% endblock %}

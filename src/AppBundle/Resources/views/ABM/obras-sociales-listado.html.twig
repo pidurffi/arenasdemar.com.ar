@@ -1,0 +1,20 @@
+{% extends 'AppBundle:ABM:template-listado.html.twig' %}
+
+{% block avanzu_page_title %}
+Obras Sociales
+{% endblock %}
+
+{% block titulo_nuevo_item %}Nueva Obra Social{% endblock %}
+{% block avanzu_page_content  %}
+	{% set nombre_entidad = 'obra social' %}
+	{% set nombre_entidad_plural = 'obras sociales' %}
+	{% set iterables = obras %}
+	{% set puede_crear = true %}
+	{% set puede_borrar = true %}
+	{% set campos = [
+	    { 'titulo': 'Nombre','campo':'nombre', 'data_info': true},
+	] %}
+	{% set form_routing = 'panel_obra_social_form' %}
+	{% set delete_routing = 'panel_obra_social_borrar' %}
+    {{parent()}}
+{% endblock %}

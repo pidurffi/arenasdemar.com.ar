@@ -1,0 +1,67 @@
+{% extends 'AppBundle:Sitio:template.html.twig' %}
+
+{% block section_home_post_header %}
+<div class="welcome">
+	<div class="container">
+		<p>EL RESPETO QUE MERECE SU SALUD</p>
+		<a href="" title="">TURNOS WEB</a>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<section class="banners">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="bannerBox one">
+						<i class="fas fa-user-md"></i>
+						<h2><span>Especialidades</span></h2>
+						
+						<a href="">Más información</a>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="bannerBox two">
+						<i class="fas fa-laptop"></i>
+						<h2><span>Tunos</span> web</h2>
+						
+						<a href="">Más información</a>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="bannerBox three">
+						<i class="fas fa-user-md"></i>
+						<h2><span>Información</span> pacientes</h2>
+						
+						<a href="{{ path('informacion-pacientes') }}">Más información</a>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="bannerBox four">
+						<i class="fas fa-map-marker-alt"></i>
+						<h2><span>Donde</span> estamos</h2>
+						
+						<a href="">Más información</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="tips">
+		<div class="container">
+			<h3>Consejos Útiles</h3>
+			<p>Aliquam erat volutpat. In hac habitasse platea dictumst. Nam viverra non arcu quis blandit. Sed sed nisl suscipit, tristique felis vitae, congue sem. Suspendisse ullamcorper leo vel dui aliquam bibendum. Tlas tempus neque vitae euismod malesuada.</p>
+			<p>Aliquam erat volutpat. In hac habitasse platea dictumst. Nam viverra non arcu quis blandit. Sed sed nisl suscipit, tristique felis vitae, congue sem. Suspendisse ullamcorper leo vel dui aliquam bibendum. Tlas tempus neque vitae euismod malesuada. Aliquam erat volutpat. In hac habitasse platea dictumst. Nam viverra non arcu quis blandit. Sed sed nisl suscipit, tristique felis vitae, congue sem. Suspendisse ullamcorper leo vel dui aliquam bibendum. Tlas tempus neque vitae euismod malesuada.</p>
+			<p>Aliquam erat volutpat. In hac habitasse platea dictumst. Nam viverra non arcu quis blandit. Sed sed nisl suscipit, tristique felis vitae, congue sem. Suspendisse ullamcorper leo vel dui aliquam bibendum. Tlas tempus neque vitae euismod malesuada.</p>
+		</div>
+	</section>
+
+	<section class="location">
+		<div id="map" class="map"></div>
+	</section>
+
+
+
+{% endblock %}

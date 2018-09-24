@@ -1,0 +1,306 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: es
+
+framework:
+    #esi:             ~
+    translator:      ~
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        admin_skin: skin-blue
+
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci        
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        dql:
+            numeric_functions:
+                Rand: MdlpBundle\DQL\RandFunction
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    encryption:  "%mailer_encryption%"
+    port:      "%mailer_port%"
+    spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+#    service:
+#        user_manager: mdlp_admin_manager
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "Mar de las Pampas"
+    
+    
+        
+easy_admin:
+    site_name: Mar de las pampas
+    entities:
+        Articulos:
+            class: MdlpBundle\Entity\Articulo
+            #controller: MdlpAdminBundle\Controller\AdminGaleriaController
+            form:
+                fields:
+                - { property: 'titulo' }
+                - { property: 'cuerpo' }
+                - { property: 'imagen', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/articulo', webDir: 'uploads/articulo' }, cropConfig: { minWidth: 1024, minHeight: 512, thumbs: { 0: { maxWidth: 605, maxHeight: 303, useAsFieldImage: true } }  } } }
+            list:
+                fields: ['id','titulo','slug']
+        Galerias:
+            class: MdlpBundle\Entity\Galeria
+            #controller: MdlpAdminBundle\Controller\AdminGaleriaController
+            form:
+                fields:
+                - { property: 'nombre' }
+                - { property: 'establecimiento' }
+                #- { property: 'galeria', type: 'Comur\ImageBundle\Form\Type\CroppableGalleryType', type_options: { uploadConfig: { uploadUrl: 'uploads/galerias', webDir: 'uploads/galerias' }, cropConfig: { minWidth: 850, minHeight: 567, thumbs: { 0: { maxWidth: 360, maxHeight: 240, useAsFieldImage: true }  } } } }
+      
+            list:
+                fields: ['id','Establecimiento','nombre']
+        Establecimientos:
+            class: MdlpBundle\Entity\Establecimiento
+            controller: MdlpAdminBundle\Controller\AdminEstablecimientoController
+            list:
+                sort: ['nombre', 'ASC']
+                fields: ['nombre', 'direccion', 'telefono', 'email', 'distancia_al_mar', 'distancia_al_cc', 'gratuito']
+            form:
+                fields:
+                     - { property: 'nombre' }
+                     - { property: 'direccion' }
+                     - { property: 'telefono' }
+                     - { property: 'celular' }
+                     - { property: 'nextel' }
+                     - { property: 'email' }
+                     - { property: 'breve_descripcion' }
+                     - { property: 'descripcion' }
+                     - { property: 'imagen_listado', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/aviso_listado', webDir: 'uploads/aviso_listado' }, cropConfig: { minWidth: 200, minHeight: 200 } } }
+                     - { property: 'imagen_principal', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/aviso_ppal', webDir: 'uploads/aviso_ppal' }, cropConfig: { minWidth: 600, minHeight: 400, thumbs: { 0: { maxWidth: 329, maxHeight: 220, useAsFieldImage: false }, 1: { maxWidth: 69, maxHeight: 46, useAsFieldImage: false }  } } } }
+                     - { property: 'gps_coor' }
+                     - { property: 'como_llegar' }
+                     - { property: 'url_sitio' }
+                     - { property: 'distancia_al_mar' }
+                     - { property: 'distancia_al_cc' }
+                     - { property: 'frente_al_mar' }
+                     - { property: 'frente_al_cc' }
+                     - { property: 'solo_efectivo' }
+                     - { property: 'cuotas_sin_interes' }
+                     - { property: 'tarjeta_visa' }
+                     - { property: 'tarjeta_mastercard' }
+                     - { property: 'tarjeta_american' }
+                     - { property: 'tarjeta_diners' }
+                     - { property: 'tarjeta_naranja' }
+                     - { property: 'tarjeta_nativa' }
+                     - { property: 'mercado_pago' }
+                     - { property: 'nombre' }
+                     - { property: 'html_title' }
+                     - { property: 'html_description' }                
+                     - { property: 'html_keywords' }             
+                     
+        Avisos:
+            class: MdlpBundle\Entity\Aviso
+            controller: MdlpAdminBundle\Controller\AdminAvisoController
+            list:
+                sort: ['id', 'ASC']
+                fields: ['id', 'Establecimiento','html_title','html_keywords']
+            form:
+                fields:
+                    - { property: 'establecimiento' }
+                    - { property: 'subrubro' }
+                    - { property: 'gratuito' }
+                    - { property: 'publicado' }
+                    - { property: 'breve_descripcion' }
+                    - { property: 'descripcion' }
+                    - { property: 'imagen_listado', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/aviso_listado', webDir: 'uploads/aviso_listado' }, cropConfig: { minWidth: 200, minHeight: 200 } } }
+                    - { property: 'imagen_principal', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/aviso_ppal', webDir: 'uploads/aviso_ppal' }, cropConfig: { minWidth: 598, minHeight: 400 } } }
+                    - { property: 'html_title' }
+                    - { property: 'html_description' }                
+                    - { property: 'html_keywords' }             
+                    - { property: 'galerias' }             
+        Usuarios:
+            class: MdlpBundle\Entity\User
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                title: Usuarios
+                fields: ['id', 'username', 'nombre', 'apellido', 'email', {label: 'Establecimientos', property: 'nombreEstablecimientos'}, 'enabled']
+        Rubros:
+            class: MdlpBundle\Entity\Subrubro
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                fields: ['nombre','rubro','slug']
+                sort: ['nombre', 'ASC']
+        Listados:
+            class: MdlpBundle\Entity\Listado
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                fields: ['id','titulo','cantidad_avisos','html_title']
+                sort: ['id', 'ASC']
+            form:
+                fields:
+                    - { property: 'titulo' }
+                    - { property: 'descripcion' }
+                    - { property: 'html_title' }
+                    - { property: 'html_description' }                
+                    - { property: 'html_keywords' }                
+        TipoServicios:
+            class: MdlpBundle\Entity\TipoServicio
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                fields: ['nombre']
+                sort: ['nombre', 'ASC']                
+        Servicios:
+            class: MdlpBundle\Entity\Servicio
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                fields: ['nombre','icon_class','peso','tipo_servicio']
+                sort: ['nombre', 'ASC']                
+        BannersInstitucionales:
+            class: MdlpBundle\Entity\BannerInstitucional
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                title: Banners Institucionales
+                fields: ['id', 'Establecimiento']
+            form:
+                fields:
+                    - { property: 'establecimiento' }
+                    - { property: 'generico' }
+                    - { property: 'activo' }
+                    - { property: 'con_reserva' }
+                    - { property: 'con_mp' }
+                    - { property: 'titulo' }
+                    - { property: 'subtitulo' }
+                    - { property: 'cuerpo' }
+                    - { property: 'con_reserva' }
+                    - { property: 'fecha_alta' }
+                    - { property: 'fecha_vencimiento' }
+                    - { property: 'imagen', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/banner_institucional', webDir: 'uploads/banner_institucional' }, cropConfig: { minWidth: 494, minHeight: 400 } } }
+                    - { property: 'imagen_completa', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/banner_institucional', webDir: 'uploads/banner_institucional' }, cropConfig: { minWidth: 823, minHeight: 400 } } }
+                    - { property: 'precio' }
+                    - { property: 'fecha_in' }
+                    - { property: 'fecha_out' }
+        Promociones:
+            class: MdlpBundle\Entity\Promocion
+            controller: MdlpAdminBundle\Controller\AdminPromocionController
+            list:
+                title: Promociones
+                fields: ['id', 'Establecimiento','nombre','vencimiento']
+            form:
+                fields:
+                    - { property: 'establecimiento' }
+                    - { property: 'nombre' }
+                    - { property: 'breve_descripcion' }
+                    - { property: 'cuerpo' }
+                    - { property: 'con_reserva' }
+                    - { property: 'con_mp' }
+                    - { property: 'con_reserva' }
+                    - { property: 'vencimiento' }
+                    - { property: 'imagen', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/promocion', webDir: 'uploads/promocion' }, cropConfig: { minWidth: 329, minHeight: 220 } } }
+                    - { property: 'precio' }
+                    - { property: 'fecha_in' }
+                    - { property: 'fecha_out' }
+                    
+#        BannersInstitucionalesReserva:
+#            class: MdlpBundle\Entity\BannerInstitucionalReserva
+#            controller: MdlpAdminBundle\Controller\AdminController
+#            list:
+#                title: Banners Institucionales con Reserva
+#                fields: ['id', 'Establecimiento', 'fecha_in', 'fecha_out', 'precio']
+#            form:
+#                fields:
+#                    - { property: 'establecimiento' }
+#                    - { property: 'titulo' }
+#                    - { property: 'subtitulo' }
+#                    - { property: 'cuerpo' }
+#                    - { property: 'fecha_alta' }
+#                    - { property: 'fecha_vencimiento' }
+#                    - { property: 'fecha_in' }
+#                    - { property: 'fecha_out' }
+#                    - { property: 'imagen', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/banner_institucional', webDir: 'uploads/banner_institucional' }, cropConfig: { minWidth: 800, minHeight: 532 } } }
+        
+        BannersDerecha:
+            class: MdlpBundle\Entity\BannerDerecha
+            controller: MdlpAdminBundle\Controller\AdminController
+            list:
+                title: Banners Derecha
+                fields: ['id', 'Establecimiento']
+            form:
+                fields:
+                    - { property: 'establecimiento' }
+                    - { property: 'url_link_externo' }
+                    - { property: 'fecha_alta' }
+                    - { property: 'fecha_vencimiento' }
+                    - { property: 'imagen', type: 'Comur\ImageBundle\Form\Type\CroppableImageType', type_options: { uploadConfig: { uploadUrl: 'uploads/banner_derecha', webDir: 'uploads/banner_derecha' }, cropConfig: { minWidth: 200, minHeight: 200 } } }
+                    - { property: 'mostrar_nombre_establecimiento' }
+                    - { property: 'visitas_link_externo_sitio_viejo' }
+                    - { property: 'visitas_link_externo_sitio_nuevo' } 
+        
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+                    
+comur_image:
+    config:
+        media_lib_thumb_size: 150
+        web_dirname: 'public_html'
+        translation_domain: 'ComurImageBundle'
+        gallery_thumb_size: 150    

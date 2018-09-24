@@ -1,0 +1,20 @@
+/* Los icheck quedan muy pegados al label, los separo un poco */
+.icheckbox_square-blue{
+	margin-right: 10px;
+	
+}
+
+/* Popup de subir imagen */
+.fileinput-button input {
+	height: 0px;
+}
+
+#image_upload_file_container .btn.btn-info.fileinput-button {
+	background-color: #006b2e;
+	border-color: #006b2e;
+	margin-bottom: 20px;
+}
+
+#image_upload_tabs {
+	display: none;
+}

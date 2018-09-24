@@ -1,0 +1,111 @@
+home:
+    path:     /
+    defaults: { _controller: AppBundle:Sitio:index }
+
+resena_institucional:
+    path:     /resena-institucional.html
+    defaults: { _controller: AppBundle:Sitio:resenaInstitucional }
+    
+mision:
+    path:     /mision-vision-valores.html
+    defaults: { _controller: AppBundle:Sitio:mision }
+    
+internacion_general:
+    path:     /internacion-general.html
+    defaults: { _controller: AppBundle:Sitio:internacionGeneral }
+    
+guardia_clinica_medica:
+    path:     /guardia-externa-clinica-medica.html
+    defaults: { _controller: AppBundle:Sitio:guardiaClinicaMedica }
+    
+guardia_traumatologia:
+    path:     /guardia-externa-traumatologia.html
+    defaults: { _controller: AppBundle:Sitio:guardiaTraumatologia }
+    
+guardia_neonatologia:
+    path:     /guardia-externa-neonatologia.html
+    defaults: { _controller: AppBundle:Sitio:guardiaNeonatologia }
+    
+guardia_pediatria:
+    path:     /guardia-externa-pediatria.html
+    defaults: { _controller: AppBundle:Sitio:guardiaPediatria }
+    
+guardia_ginecologia:
+    path:     /guardia-externa-ginecologia.html
+    defaults: { _controller: AppBundle:Sitio:guardiaGinecologia }
+    
+centro_quirurgico:
+    path:     /centro-quirurgico.html
+    defaults: { _controller: AppBundle:Sitio:centroQuirurgico }
+    
+neonatologia:
+    path:     /neonatologia.html
+    defaults: { _controller: AppBundle:Sitio:neonatologia }
+    
+terapia_intensiva:
+    path:     /terapia-intensiva.html
+    defaults: { _controller: AppBundle:Sitio:terapiaIntensiva }
+    
+cardiologia_consultorios_externos:
+    path:     /cardiologia-consultorios-externos.html
+    defaults: { _controller: AppBundle:Sitio:cardiologiaConsultorioExternos }
+    
+cardiologia_estudios:
+    path:     /cardiologia-estudios.html
+    defaults: { _controller: AppBundle:Sitio:cardiologiaEstudios }
+    
+hemodinamia:
+    path:     /hemodinamia.html
+    defaults: { _controller: AppBundle:Sitio:hemodinamia }
+    
+cirugia_cardiovascular:
+    path:     /cirugia-cardiovascular.html
+    defaults: { _controller: AppBundle:Sitio:cirugiaCardiovascular }
+    
+hemoterapia:
+    path:     /hemoterapia.html
+    defaults: { _controller: AppBundle:Sitio:hemoterapia }
+    
+kinesiologia:
+    path:     /kinesiologia.html
+    defaults: { _controller: AppBundle:Sitio:kinesiologia }
+    
+oftalmologia:
+    path:     /oftalmologia.html
+    defaults: { _controller: AppBundle:Sitio:oftalmologia }
+    
+laboratorio:
+    path:     /laboratorio.html
+    defaults: { _controller: AppBundle:Sitio:laboratorio }
+    
+diagnostico-por-imagenes:
+    path:     /diagnostico-por-imagenes.html
+    defaults: { _controller: AppBundle:Sitio:diagnosticoPorImagenes }
+    
+galeria:
+    path:     /galeria.html
+    defaults: { _controller: AppBundle:Sitio:galeria }
+
+coberturas:
+    path:     /coberturas.html
+    defaults: { _controller: AppBundle:Sitio:coberturas }
+
+turnos:
+    path:     /turnos.html
+    defaults: { _controller: AppBundle:Sitio:turnos }
+
+como-llegar:
+    path:     /como-llegar.html
+    defaults: { _controller: AppBundle:Sitio:comoLlegar }
+    
+servicios-profesionales:
+    path:     /servicios-profesionales.html
+    defaults: { _controller: AppBundle:Sitio:serviciosProfesionales }    
+
+informacion-pacientes:
+    path:     /informacion-pacientes.html
+    defaults: { _controller: AppBundle:Sitio:informacionPacientes }   
+
+mamografia:
+    path:     /mamografia.html
+    defaults: { _controller: AppBundle:Sitio:mamografia }

@@ -1,0 +1,18 @@
+{% extends 'AppBundle:Sitio:template.html.twig' %}
+
+{% block section_home_extra %}interna{% endblock %}
+{% block content %}
+	<section class="intContent">
+		<div class="container">
+			<h3>Coberturas</h3>
+			<ul class="obras-sociales">
+				{% for obra in obras %}
+					<li>
+						<img src="/uploads/obra_social/{{ obra.imagen }}" />
+						<span>{{ obra.nombre }}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+{% endblock %}

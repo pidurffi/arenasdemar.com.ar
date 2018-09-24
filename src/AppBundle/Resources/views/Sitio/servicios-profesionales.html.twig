@@ -1,0 +1,28 @@
+{% extends 'AppBundle:Sitio:template.html.twig' %}
+
+{% block section_home_extra %}interna{% endblock %}
+{% block content %}
+	<section class="intContent">
+		<div class="container">
+			<h3>Servicios Profesionales</h3>
+			<div class="row">
+				{% for servicio in servicios %}
+					<div class="col-sm-6">
+						<div class="item-especialidad {% if servicio.destacado %}destacado{% endif %}">
+							<div class="row">
+								<div class="col-sm-4">
+									<img src="/uploads/servicios/{{ servicio.imagen }}" />
+								</div>
+								<div class="col-sm-8">
+									<h4>{{ servicio.nombre }}</h4>
+									<p>{{ servicio.descripcion }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

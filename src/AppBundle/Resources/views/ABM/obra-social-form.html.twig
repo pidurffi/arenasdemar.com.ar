@@ -1,0 +1,98 @@
+{% set titulo_entidad = "Obra Social" %}
+{% set link_cancelar = path('panel_obras_sociales') %}
+{% extends 'AppBundle:ABM:template-form.html.twig' %}
+{% block avanzu_page_content %}
+    {{  parent() }}
+{% endblock %}
+{% block avanzu_javascripts_inline %}
+	{{ parent() }}
+{% endblock %}
+{#
+
+{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+{% block avanzu_navbar_control_sidebar_toggle %}{% endblock %}
+{% block avanzu_head %} 
+  {% include 'AvanzuAdminThemeBundle:Partials:_header-form-extra.html.twig' %}
+  <link rel="stylesheet" href="{{ asset('bundles/app/stylesheets/adminlte-custom-fixes.css') }}">
+{% endblock %}
+
+{% block avanzu_page_title %} Promoci&oacute;n {% endblock %}
+
+{% block avanzu_page_content %}
+
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
+                {% block box_before %}{{ form_start(form) }}{% endblock %}
+                {% block box_title %}Promoci&oacute;n{% endblock %}
+                {% block box_body %}{{ form_widget(form) }}{% endblock %}
+                {% block box_footer %}
+                    <div class="pull-right">
+                        <button type="reset" class="btn btn-warning btf-form-cancel"><i class="fa fa-times"></i> {{ 'Cancel'|trans({}, 'AvanzuAdminTheme') }}</button>
+                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> {{ 'Guardar'|trans({}, 'AvanzuAdminTheme') }}</button>
+                    </div>
+                {% endblock %}
+
+                {% block box_after %}{{ form_end(form)}}{% endblock %}
+            {% endembed %}
+
+
+
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block avanzu_after_body_start %}
+{% endblock %}
+
+{% block avanzu_javascripts %}
+    {% include 'AvanzuAdminThemeBundle:Partials:_scripts-form-extra.html.twig' %}
+	<script src="{{ asset('bundles/app/js/flash-messages.js') }}"></script>
+	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+	<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    {#
+    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig"%}
+    #}
+  {#  {% include "AppBundle:Template:croppable_image_modal_mejorado.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
+{% endblock %}
+{% block avanzu_javascripts_inline %}
+    <script>
+        $(function () {
+            //console.log('{{ 'augmenting form'|trans({}, 'AvanzuAdminTheme') }}...');
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $('select').select2();
+            $('[data-datepickerenable="on"]').datepicker({autoclose: true,format: 'dd/mm/yyyy'});
+            $('[data-timepicker="on"]').timepicker();
+            $('.btf-form-cancel').click(function() {
+                window.location = "{{ path('panel_promociones') }}";
+            });
+
+            $('.image_preview.select-image-button').each(function() {
+                var _id = $(this).data('onlyid');
+                var caller = "prepareComurImage_"+_id;
+                window[caller](); 
+                
+            });
+        });
+    </script>
+    {% include 'AppBundle:Template:flash-messages.html.twig' %}
+{% endblock %}
+#}

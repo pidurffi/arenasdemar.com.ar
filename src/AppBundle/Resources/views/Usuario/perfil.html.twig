@@ -1,0 +1,70 @@
+{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+{% block avanzu_head %} {% include 'AvanzuAdminThemeBundle:Partials:_header-form-extra.html.twig' %}{% endblock %}
+{% block avanzu_navbar_control_sidebar_toggle %}{% endblock %}
+
+{% block avanzu_page_title %} Mi Perfil {% endblock %}
+
+{% block avanzu_page_content %}
+
+    <div class="row">
+        <div class="col-md-4">
+
+
+
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+
+            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
+                {% block box_before %}{{ form_start(form) }}{% endblock %}
+                {% block box_title %}Mi Perfil{% endblock %}
+                {% block box_body %}{{ form_widget(form) }}{% endblock %}
+                {% block box_footer %}
+                    <div class="pull-right">
+                        {#<button type="reset" class="btn btn-warning "><i class="fa fa-times"></i> {{ 'Cancel'|trans({}, 'AvanzuAdminTheme') }}</button>#}
+                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> {{ 'Guardar'|trans({}, 'AvanzuAdminTheme') }}</button>
+                    </div>
+                {% endblock %}
+
+                {% block box_after %}{{ form_end(form)}}{% endblock %}
+            {% endembed %}
+
+
+
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block avanzu_javascripts %}
+    {% include 'AvanzuAdminThemeBundle:Partials:_scripts-form-extra.html.twig' %}
+	<script src="{{ asset('bundles/app/js/flash-messages.js') }}"></script>
+{% endblock %}
+{% block avanzu_javascripts_inline %}
+    <script>
+        $(function () {
+            console.log('{{ 'augmenting form'|trans({}, 'AvanzuAdminTheme') }}...');
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $('select').select2();
+            $('[data-datepicker="on"]').datepicker({autoclose: true});
+            $('[data-timepicker="on"]').timepicker();
+        });
+    </script>
+    {% include 'AppBundle:Template:flash-messages.html.twig' %}
+{% endblock %}

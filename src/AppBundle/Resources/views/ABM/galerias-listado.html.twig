@@ -1,0 +1,20 @@
+{% extends 'AppBundle:ABM:template-listado.html.twig' %}
+
+{% block avanzu_page_title %}
+Galerias
+{% endblock %}
+
+{% block titulo_nuevo_item %}Nueva Galeria{% endblock %}
+{% block avanzu_page_content  %}
+	{% set nombre_entidad = 'galeria' %}
+	{% set nombre_entidad_plural = 'galerias' %}
+	{% set iterables = galerias %}
+	{% set puede_crear = true %}
+	{% set puede_borrar = true %}
+	{% set campos = [
+	    { 'titulo': 'Nombre','campo':'nombre', 'data_info': true},
+	] %}
+	{% set form_routing = 'panel_galeria_form' %}
+	{% set delete_routing = 'panel_galeria_borrar' %}
+    {{parent()}}
+{% endblock %}

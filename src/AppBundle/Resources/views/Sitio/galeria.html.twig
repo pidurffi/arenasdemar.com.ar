@@ -1,0 +1,11 @@
+{% extends 'AppBundle:Sitio:template.html.twig' %}
+
+{% block section_home_extra %}interna{% endblock %}
+{% block content %}
+	<section class="intContent">
+		<div class="container">
+			<h3>Galeria</h3>
+            {{ render(controller('AppBundle:Sitio:templateGaleria',{id_galeria: 1})) }}
+		</div>
+	</section>
+{% endblock %}

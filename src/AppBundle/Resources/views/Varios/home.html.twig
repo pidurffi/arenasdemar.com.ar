@@ -1,0 +1,21 @@
+{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+{% block avanzu_navbar_control_sidebar_toggle %}{% endblock %}
+
+{% block avanzu_javascripts %}
+<script src="{{ asset('bundles/mdlppanel/js/flash-messages.js') }}"></script>
+{% endblock %} 
+
+{% block avanzu_logo_mini %}<b>SG</b> Sarmiento{% endblock %}
+{% block avanzu_logo_lg %}<b>SG</b> Sarmiento{% endblock %}
+
+{% block avanzu_document_title %}SG Sarmiento{% endblock %}
+{% block avanzu_sidebar_search %}{% endblock %}
+{% block avanzu_page_title %}Bienvenido{% endblock %}
+{% block avanzu_page_subtitle %}{% endblock %} 
+
+
+{% block avanzu_page_content  %}
+{{parent()}}
+{% endblock %}
+
+{% block avanzu_javascripts_inline %}{% include 'AppBundle:Template:flash-messages.html.twig' %}{% endblock %}

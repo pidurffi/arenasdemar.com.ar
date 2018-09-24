@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sanatorio General Sarmiento</title>
+	<!-- CSS -->
+	<link href="{{ asset('bundles/app/maquetado/stylesheets/screen.css') }}" media="screen, projection" rel="stylesheet" type="text/css" />
+	<!--<link href="stylesheets/fonts.css" media="screen, projection" rel="stylesheet" type="text/css" />-->
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500,900,100' rel='stylesheet' type='text/css'>
+	<!-- JS -->
+	<script type="text/javascript" src="{{ asset('bundles/app/maquetado/js/jquery-2.2.3.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/app/maquetado/js/functions.js') }}"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGSGy2P4bW8aEaK-CqaF4XezyxqDMSgQc"></script>
+	<script>
+		function initialize() {
+			var isDraggable = $(document).width() > 480 ? true : false;  
+			var ispanControl = $(document).width() > 480 ? true : false;
+			var myLatLng = {lat: -34.5402356, lng: -58.7168347};
+			var marker = new google.maps.Marker({
+				animation: google.maps.Animation.BOUNCE,
+				position: myLatLng,
+				title:"Sanatorio General Sarmiento"
+			});
+			var mapCanvas = document.getElementById('map');
+			var mapOptions = {
+				center: new google.maps.LatLng(-34.5402356, -58.7168347),
+				zoom: 15,
+				mapTypeControl: true,
+				panControl:ispanControl,
+				draggable: isDraggable,
+				scaleControl: true,
+				streetViewControl: true,
+				rotateControl: true,
+				scrollwheel: false,
+				mapTypeId: google.maps.MapTypeId.TERRAIN
+			}
+			var map = new google.maps.Map(mapCanvas, mapOptions);
+			marker.setMap(map);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+
+	<section class="home {% block section_home_extra %}{% endblock %}">
+		<!--   
+		<div class="info-header">
+			<div class="container">
+				<span><i class="fas fa-phone"></i> Central de turnos: (+5411) 4469-7300</span>
+				<ul>
+					<li><a href="">Envíe su CV</a></li>
+					<li><a href="">Horarios</a></li>
+					<li><a href="">Contacto</a></li>
+				</ul>
+			</div>
+		</div>
+		-->
+		<header>
+			<div class="container header-container">
+				<a href="/"><h1 class="logo">Sanatorio General Sarmiento</h1></a>
+				<nav>
+					<ul>
+						<li>
+							<a >Institución</a>
+							<ul class="sub-nav-one">
+								<li><a href="{{ path('resena_institucional') }}" title="">Reseña institucional</a></li>
+								<li><a href="{{ path('mision') }}" title="">Misión, visión y valores</a></li>
+							</ul>
+						</li>
+						<li>
+							<a>Servicios</a>
+							<ul class="sub-nav-one">
+								<li>
+									<a title="">Servicios médicos <i class="fas fa-angle-right"></i></a>
+									<ul class="sub-nav-two">
+										<li><a href="{{ path('internacion_general') }}" title="">Internación general</a></li>
+										<li>
+											<a title="">Guardia <i class="fas fa-angle-right"></i></a>
+											<ul class="sub-nav-three">
+												<li><a href="{{ path('guardia_clinica_medica') }}" title="">Clínica médica</a></li>
+												<li><a href="{{ path('guardia_traumatologia') }}" title="">Traumatología</a></li>
+												{# <li><a href="{{ path('guardia_neonatologia') }}" title="">Neonatologia</a></li> #}
+												<li><a href="{{ path('guardia_pediatria') }}" title="">Pediatría</a></li>
+												<li><a href="{{ path('guardia_ginecologia') }}" title="">Ginecología y obstetricia</a></li>
+											</ul>
+										</li>
+										<li><a href="{{ path('centro_quirurgico') }}" title="">Centro quirúrgico</a></li>
+										<li><a href="{{ path('neonatologia') }}" title="">Neonatología</a></li>
+										<li><a href="{{ path('terapia_intensiva') }}" title="">Terapia intensiva</a></li>
+										<li>
+											<a title="">Cardiología <i class="fas fa-angle-right"></i></a>
+											<ul class="sub-nav-three">
+												<li><a href="{{ path('cardiologia_consultorios_externos') }}" title="">Consultorios externos y estudios</a></li>
+												{# <li><a href="{{ path('cardiologia_estudios') }}" title="">Estudios</a></li> #}
+												<li><a href="{{ path('hemodinamia') }}" title="">Hemodinamia</a></li>
+												<li><a href="{{ path('cirugia_cardiovascular') }}" title="">Cirugía cardiovascular</a></li>
+											</ul>
+										</li>
+										<li><a href="{{ path('hemoterapia') }}" title="">Hemoterapia</a></li>
+										<li><a href="{{ path('kinesiologia') }}" title="">Kinesiología</a></li>
+										<li><a href="{{ path('oftalmologia') }}" title="">Oftalmología</a></li>
+										<li><a href="{{ path('laboratorio') }}" title="">Laboratorio</a></li>
+										<li><a href="{{ path('mamografia') }}" title="">Mamografía</a></li>
+									</ul>
+								</li>
+								<li><a href="{{ path('diagnostico-por-imagenes') }}" title="">Diagnostico por imágenes</a></li>
+							</ul>
+						</li>
+						{# <li><a href="{{ path('galeria') }}">Galería</a></li> #}
+						<li><a href="{{ path('coberturas') }}">Coberturas</a></li>
+						<li><a href="{{ path('turnos') }}">Turnos</a></li>
+						<li><a href="{{ path('como-llegar') }}">Como llegar</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		{% block section_home_post_header %}
+		{% endblock %}
+	</section>
+
+	{% block content %}
+	{% endblock %}
+	
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">	
+					<h3>Contacto</h3>
+					<ul>
+						<li>
+							<i class="icon-mark"></i>
+							<span>Av. Pres. Juan Domingo Perón 1796<br>B1663GHT - Buenos Aires<br>Argentina</span>
+						</li>
+						<li>
+							<i class="icon-mail"></i>
+							<a href="mailto:info@sanatoriogeneralsarmiento.com.ar">info@sanatoriogsarmiento.com.ar</a>
+						</li>
+						<li>
+							<i class="icon-tel"></i>
+							<span>011 4469.7300</span>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<!--
+					<h3>Consultas</h3>
+					<form>
+						<input type="" placeholder="HOMBRE Y APELLIDO" name="">
+						<input type="" placeholder="EMAIL" name="">
+						<textarea placeholder="MENSAJE"></textarea>
+						<button type="submit">Enviar</button>
+					</form>
+					-->
+				</div>
+				<div class="col-sm-4">
+					<h3>Links</h3>
+					<ul class="footer-nav">
+						<li><a href="">Inicio</a></li>
+						<li><a href="">Institución</a></li>
+						<li><a href="">Profesionales</a></li>
+						<li><a href="">Galería</a></li>
+						<li><a href="">Obras Sociales</a></li>
+						<li><a href="">Turnos</a></li>
+						<li><a href="">Trabajá con nosotros</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<p>&copy; 2017 - Sanatorio General Sarmiento - Todos los derechos reservados</p>
+				</div>
+				<div class="col-sm-2">
+					<img src="/images/data-fiscal.jpg" alt="Data - Fiscal | Sanatorio General Sarmiento">
+				</div>
+				<div class="col-sm-2">
+					<img src="/images/registro-nacional-de-bases-de-datos.jpg" alt="Registro Nacional de Bases de Datos | Sanatorio General Sarmiento">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

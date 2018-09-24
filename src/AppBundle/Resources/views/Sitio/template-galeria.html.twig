@@ -1,0 +1,9 @@
+<ul>
+	{% for foto in galeria.galeria %}
+	<li>chica: {{ foto }}
+		<img style="width:auto" src="{{ asset('/uploads/galerias/') }}/{{ foto|gallery_thumb(84,45) }}" alt=""> -
+		grande:
+		<img style="width:auto" src="{{ asset('/uploads/galerias/') }}/gallery/{{ foto }}" alt=""> -  
+	</li>
+	{% endfor %}
+</ul>

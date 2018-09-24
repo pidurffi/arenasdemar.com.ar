@@ -1,0 +1,48 @@
+homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Panel:index }
+    options:
+      avanzu_admin_route: welcome
+      
+    
+logout:
+    path:     /salir
+    defaults: { _controller: AppBundle:Panel:logout }
+    options:
+      avanzu_admin_route: logoutsss
+      
+profile:
+    path:     /mi-perfil
+    defaults: { _controller: AppBundle:Panel:perfil }
+    options:
+      avanzu_admin_route: profile          
+      
+panel_servicios:
+    path:     /servicios
+    defaults: { _controller: AppBundle:Panel:servicios }
+panel_servicio_borrar:
+    path:     /servicio-borrar/{id}
+    defaults: { _controller: AppBundle:Panel:servicioDelete }
+panel_servicio_form:
+    path:     /servicio-form
+    defaults: { _controller: AppBundle:Panel:servicioForm }
+    
+panel_obras_sociales:
+    path:     /obras-sociales
+    defaults: { _controller: AppBundle:Panel:obrasSociales }
+panel_obra_social_borrar:
+    path:     /obra-social-borrar/{id}
+    defaults: { _controller: AppBundle:Panel:obraSocialDelete }
+panel_obra_social_form:
+    path:     /obra-social-form
+    defaults: { _controller: AppBundle:Panel:obraSocialForm }                
+    
+panel_galerias:
+    path:     /galerias
+    defaults: { _controller: AppBundle:Panel:galerias }
+panel_galeria_borrar:
+    path:     /galeria-borrar/{id}
+    defaults: { _controller: AppBundle:Panel:galeriaDelete }
+panel_galeria_form:
+    path:     /galeria-form
+    defaults: { _controller: AppBundle:Panel:galeriaForm }                    

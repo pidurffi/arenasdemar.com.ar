@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: bf_sgsarmiento
+    database_user: bf_sgsarmiento
+    database_password: bf_sgsarmiento
+    mailer_transport: smtp
+    mailer_host: wagoneer.websitewelcome.com
+    mailer_port: 465
+    mailer_user: info+mardelaspampas.travel
+    mailer_password: hUBe8aze
+    mailer_encryption: ssl
+    secret: c8ec181666faafa3a53c968f237638e7bdae8b80
+    sitio: mdlp

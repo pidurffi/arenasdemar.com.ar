@@ -1,0 +1,17 @@
+#app:
+#    resource: "@MdlpSitioBundle/Controller/"
+#    type:     annotation
+sitio:
+    resource: "@AppBundle/Resources/config/routing_sitio.yml"
+    prefix:   /
+panel:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /panel
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+comur_image:
+    resource: "@ComurImageBundle/Resources/config/routing.yml"
+    prefix:   /    
+    

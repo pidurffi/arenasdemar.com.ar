@@ -1,0 +1,32 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+    panel_bundle.show_user_listener.class: AppBundle\EventListener\MyShowUserListener
+
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+#    sitio_resolver:
+#        class: MdlpSitioBundle\Services\SitioResolver
+#        arguments: ["%sitio%"]
+    menu_listener:
+        class: AppBundle\EventListener\MyMenuItemListListener
+        arguments: ["@security.token_storage"]
+        tags:
+            - { name: kernel.event_listener, event:theme.sidebar_setup_menu, method:onSetupMenu }
+#    app.setup_knp_menu_listener:
+#        class: MdlpPanelBundle\Services\SetupKnpMenuListener
+#        tags:
+#            - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupMenu }
+    panel_bundle.show_user_listener:
+        arguments: ["@security.token_storage"]
+        class: %panel_bundle.show_user_listener.class%
+        tags:
+            - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
+#    mdlp_admin_manager:
+#        class: MdlpBundle\Entity\UserManager
+#        arguments: ["@fos_user.util.password_updater", "@fos_user.util.canonical_fields_updater", "@doctrine.orm.entity_manager", MdlpBundle\Entity\User] 
+ 
